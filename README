@@ -1,0 +1,49 @@
+pHpReader - reading pH values from atsci_ph.
+    Copyright (C) 2017  Ole-Henrik Jakobsen
+
+
+Software requirements:
+	php-cli			To run PHP code at command line interface
+	i2c-tools		To connect with the pH circuit board.
+	atlas_scientific 	To interact with the reader module (git clone https://github.com/jvsalo/atlas_scientific.git)
+	
+
+-----------------------------------------------------------------------------------------------------------
+ Supported sensors:	| Information:
+-----------------------------------------------------------------------------------------------------------
+	Dummy		|	For testing purposes.
+-----------------------------------------------------------------------------------------------------------
+	AtlasScientific	|	For the AtlasScientific pH Probe and others compatible with their pH circuit board.
+	pH Probe	|	
+	Circuit board	|	Sensor installation:
+			|		To install and enable the sensors you need to enable I2C mode (default is UART):
+			|			This require you to short the TX with PGND on the board with power connected.
+			|			See the manual for more information:
+			|				Page 39: https://www.atlas-scientific.com/_files/_datasheets/_circuit/pH_EZO_datasheet.pdf
+			|			
+			|
+			|
+-----------------------------------------------------------------------------------------------------------
+
+Configuration of pHpReader:
+	Choose type of sensor(s) to include and also enable and disable the test mode.
+	Config file: config.ini
+
+
+Configuration of sensors:
+	Choose the address of the sensor and the path to AtlasScientific tools
+
+
+Use pHpReader:
+	CLI:
+		cd /path/to/phreader
+		php phreader.php [sensor]
+	
+	PHP:
+		$path = "/path/to/phreader";
+		chdir($path);
+		include_once("" . $path . "/phreader.php");
+
+
+Use pHpReader function:
+	phreader(); = int $value
